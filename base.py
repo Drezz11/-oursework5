@@ -33,10 +33,11 @@ class Arena(metaclass=BaseSingleton):
         # TODO если Здоровья игроков в порядке то ничего не происходит
         if self.player.hp < 0 and self.enemy.hp < 0:
             self.battle_result = 'Ничья'
-        elif self.player.hp < 0:
+        elif self.player.hp < 0 < self.enemy.hp:
             self.battle_result = 'Игрок проиграл битву'
-        else:
+        elif self.enemy.hp < 0:
             self.battle_result = 'Игрок выйграл битву'
+
         return self._end_game()
 
     def _stamina_regeneration(self):
@@ -72,7 +73,8 @@ class Arena(metaclass=BaseSingleton):
         # TODO останавливаем игру (game_is_running)
         # TODO возвращаем результат
         self._instances = {}
-        self.game_is_running = False
+        self.game_is_running = True
+
         return self.battle_result
     def player_hit(self) -> str:
         # TODO КНОПКА УДАР ИГРОКА -> return result: str

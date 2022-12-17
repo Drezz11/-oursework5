@@ -87,7 +87,7 @@ class BaseUnit(ABC):
         if self._is_skill_used:
             return 'Навык уже использован'
         self._is_skill_used = True
-        return self.unit_class.skill.use(use=self, target=target)
+        return self.unit_class.skill.use(user=self, target=target)
 
 class PlayerUnit(BaseUnit):
 
